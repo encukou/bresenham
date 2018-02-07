@@ -19,3 +19,12 @@ from bresenham import bresenham
 def test_bresenham(x0, y0, x1, y1, result):
     assert tuple(bresenham(x0, y0, x1, y1)) == result
     assert tuple(bresenham(x1, y1, x0, y0)) == tuple(reversed(result))
+
+
+def test_min_slope_two_way():
+    assert tuple(bresenham(0, 0, 10, 1)) == ((0, 0), (1, 0), (2, 0), (3, 0),
+                                             (4, 0), (5, 1), (6, 1), (7, 1),
+                                             (8, 1), (9, 1), (10, 1))
+    assert tuple(bresenham(10, 1, 0, 0)) == ((10, 1), (9, 1), (8, 1), (7, 1),
+                                             (6, 1), (5, 0), (4, 0), (3, 0),
+                                             (2, 0), (1, 0), (0, 0))

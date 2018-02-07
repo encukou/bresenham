@@ -31,7 +31,7 @@ def bresenham(x0, y0, x1, y1):
 
     for x in range(dx + 1):
         yield x0 + x*xx + y*yx, y0 + x*xy + y*yy
-        if D > 0:
+        if D >= 0:
             y += 1
-            D -= dx
-        D += dy
+            D -= 2*dx
+        D += 2*dy
