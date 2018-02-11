@@ -7,7 +7,7 @@ with open('README') as f:
 
 setup(
     name='bresenham',
-    version='0.1',
+    version='0.2',
     description="An implementation of Bresenham's line drawing algorithm",
     long_description=long_description,
     author='Petr Viktorin',
