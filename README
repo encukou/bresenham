@@ -1,7 +1,7 @@
 The bresenham module
 ====================
 
-An implementation of Bresenham's line drawing algorithm.
+A simple implementation of Bresenham's line drawing algorithm.
 
 See `the Wikipedia entry`_ for details on what that is.
 
@@ -15,7 +15,7 @@ In a Python virtual environment, do::
 
     python -m pip install bresenham
 
-To install an editable from a Git checkout::
+To install from a Git checkout (in editable mode)::
 
     python -m pip install -e.
 
@@ -25,10 +25,10 @@ To install without a virtual envitonment, add the ``--user`` option.
 Usage
 =====
 
-The ``bresenham(x0, y0, x1, y1)`` function, which returns a generator of
+The ``bresenham(x0, y0, x1, y1)`` function returns a generator of
 the coordinates of the line from ``(x0, y0)`` to ``(x1, y1)``.
 
-For example, the coordinates of a line from, say, (-1, -4) to (3, 2), are::
+For example, the coordinates of a line from (-1, -4) to (3, 2), are::
 
     >>> from bresenham import bresenham
 
