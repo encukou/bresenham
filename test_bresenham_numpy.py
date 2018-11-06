@@ -1,6 +1,6 @@
 import pytest
 
-from bresenham_numpy import bresenham
+from bresenham_numpy import bresenham_numpy, convert_to_tuples
 
 
 @pytest.mark.parametrize(('x0', 'y0', 'x1', 'y1', 'result'), (
@@ -19,14 +19,29 @@ from bresenham_numpy import bresenham
                    (6, 1), (7, 1), (8, 1), (9, 1), (10, 1), (11, 1))),
 ))
 def test_bresenham(x0, y0, x1, y1, result):
-    assert tuple(bresenham(x0, y0, x1, y1)) == result
-    assert tuple(bresenham(x1, y1, x0, y0)) == tuple(reversed(result))
+    assert tuple(convert_to_tuples(*bresenham_numpy(x0, y0, x1, y1))) == result
+    assert tuple(convert_to_tuples(*bresenham_numpy(x1, y1, x0, y0))) == tuple(reversed(result))
 
 
 def test_min_slope_two_way():
-    assert tuple(bresenham(0, 0, 10, 1)) == ((0, 0), (1, 0), (2, 0), (3, 0),
-                                             (4, 0), (5, 1), (6, 1), (7, 1),
-                                             (8, 1), (9, 1), (10, 1))
-    assert tuple(bresenham(10, 1, 0, 0)) == ((10, 1), (9, 1), (8, 1), (7, 1),
-                                             (6, 1), (5, 0), (4, 0), (3, 0),
-                                             (2, 0), (1, 0), (0, 0))
+    assert tuple(convert_to_tuples(*bresenham_numpy(0, 0, 10, 1))) == ((0, 0), (1, 0), (2, 0), (3, 0),
+                                                   (4, 0), (5, 1), (6, 1), (7, 1),
+                                                   (8, 1), (9, 1), (10, 1))
+    assert tuple(convert_to_tuples(*bresenham_numpy(10, 1, 0, 0))) == ((10, 1), (9, 1), (8, 1), (7, 1),
+                                                   (6, 1), (5, 0), (4, 0), (3, 0),
+                                                   (2, 0), (1, 0), (0, 0))
+
+
+@pytest.mark.parametrize(('x0', 'y0', 'x1', 'y1', 'result'), (
+    (0.5, 0, 5, 0, ((0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0))),
+    (-0.1, 0, -5, 0, ((0, 0), (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0))),
+    (+2/3, +1, 2, 3, ((1, 1), (1, 2), (2, 3))),
+    (-2/3, +1, -2, 3, ((-1, 1), (-1, 2), (-2, 3))),
+    (+2/3, -1, 2, -3, ((1, -1), (1, -2), (2, -3))),
+    (-2/3, -1, -2, -3, ((-1, -1), (-1, -2), (-2, -3))),
+    (-1/3, -2, 3, 3, ((0, -2), (0, -1), (1, 0), (2, 1), (2, 2), (3, 3))),
+    (1, 1/11, 11, 1, ((1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 1), (7, 1), (8, 1), (9, 1), (10, 1), (11, 1))),
+))
+def test_bresenham_floats(x0, y0, x1, y1, result):
+    assert tuple(convert_to_tuples(*bresenham_numpy(x0, y0, x1, y1))) == result
+    assert tuple(convert_to_tuples(*bresenham_numpy(x1, y1, x0, y0))) == tuple(reversed(result))
