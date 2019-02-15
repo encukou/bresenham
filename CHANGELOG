@@ -1,0 +1,8 @@
+bresenham 0.2.1:
+
+* Just a README update
+
+
+bresenham 0.2:
+
+* Fix error adjustment for low-slope lines
