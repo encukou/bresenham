@@ -7,6 +7,24 @@ See `the Wikipedia entry`_ for details on what that is.
 
 .. _the Wikipedia entry: https://en.wikipedia.org/wiki/Bresenham's_line_algorithm
 
+Note that this is a simple implementation.
+It is written in Pure Python (without e.g. `numpy`), so it is relatively slow.
+
+I found some beauty in combining the classic algorithm (whose ingenuity lies in
+using only integers – a constraint that isn't really as relevant now)
+with a Python generator (a modern device that follows the spirit of
+“executable pseudocode”, abstracting away the output subroutine).
+I hope others can appreciate the code as well.
+
+For serious use, look at these:
+
+* `skimage.draw.line`_, which solves the same problem *fast*.
+* A `Numpy-based recipe`_ that generalizes the solution to <var>N</var>
+  dimensions.
+
+.. _`skimage.draw.line`: http://scikit-image.org/docs/dev/api/skimage.draw.html#skimage.draw.line
+.. _`Numpy-based recipe`: http://code.activestate.com/recipes/578112-bresenhams-line-algorithm-in-n-dimensions/
+
 
 Installation
 ============
