@@ -21,9 +21,11 @@ For serious use, look at these:
 * `skimage.draw.line`_, which solves the same problem *fast*.
 * A `Numpy-based recipe`_ that generalizes the solution to <var>N</var>
   dimensions.
+* `wasabigeom`_, a 2D vector library made for games
 
 .. _`skimage.draw.line`: http://scikit-image.org/docs/dev/api/skimage.draw.html#skimage.draw.line
 .. _`Numpy-based recipe`: http://code.activestate.com/recipes/578112-bresenhams-line-algorithm-in-n-dimensions/
+.. _`wasabigeom`: https://pypi.org/project/wasabi-geom/
 
 
 Installation
